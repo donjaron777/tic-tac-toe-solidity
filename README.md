@@ -2,11 +2,11 @@
 
 There are two main files: 
 
-contracts/TicTacToe.sol (the very contract)
+*contracts/TicTacToe.sol* (the very contract)
 
 and 
 
-test/TTT.js (tests for the contract)
+*test/TTT.js* (tests for the contract)
 
 Run 
 
@@ -14,4 +14,4 @@ Run
 
 npx hardhat test
 ```
-To see it in action
+To see the Tic-Tac-Toe game in action
