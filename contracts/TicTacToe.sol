@@ -303,8 +303,9 @@ contract TicTacToe {
         checkIsGameOwner(_gameId)
     {
         //current player loses
+	//10 left for test purposes
         require(
-            (block.timestamp - games[_gameId].lastTimeStamp) >= 300,
+            (block.timestamp - games[_gameId].lastTimeStamp) >= 10,
             "Playing"
         );
 

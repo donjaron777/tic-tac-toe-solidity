@@ -239,4 +239,21 @@ describe('TicTacToe game mechanics:', function () {
 		//Move + Win(Draw) events are fired
 		expect(rc8.events[1].args.endType).to.equal('Draw');
 	});
+ 	it('Claiming win before timeout', async () => {
+                let tx = await ttt.connect(addr1).xPlay(gameId, 0, 1);
+                let rc = await tx.wait();
+
+                await expect(ttt.connect(addr2).claimWinGameByTimeout(gameId)).to.be.revertedWith('Playing');
+
+        });
+        it('Claiming win after timeout', async () => {
+                let tx = await ttt.connect(addr1).xPlay(gameId, 0, 1);
+                let rc = await tx.wait();
+                await new Promise(resolve => setTimeout(resolve, 11000)); // 11 sec
+
+                let tx1 = await ttt.connect(addr2).claimWinGameByTimeout(gameId)
+                let rc1 = await tx1.wait();
+
+                expect(rc1.events[0].args.endType).to.equal('TimeOut');
+        });
 });
