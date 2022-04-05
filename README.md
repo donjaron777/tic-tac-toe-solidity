@@ -1,4 +1,4 @@
-# Tic Tac Toe game in Solidity
+# Tic-Tac-Toe game in Solidity
 
 There are two main files: 
 
